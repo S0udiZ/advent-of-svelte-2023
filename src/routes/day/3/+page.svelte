@@ -67,14 +67,14 @@
 	<article class="grid grow grid-cols-5 overflow-x-hidden">
 		<div class="col-span-2 p-4 h-[calc(100vh-7rem)] overflow-y-auto flex align-top flex-wrap gap-2 scroolbar scrollbar-thin scrollbar-track-slate-100 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-900 dark:scrollbar-thumb-slate-500">
             {#each $list as item, index}
-                <button disabled={(100-$procent)<item.weight} on:click={() => addToPouch(index)} class="flex border bg-black rounded-lg p-2 h-fit disabled:opacity-25">
+                <button disabled={(100-$procent)<item.weight} on:click={() => addToPouch(index)} class="flex border bg-slate-100 dark:bg-slate-900 rounded-lg p-2 h-fit disabled:opacity-25">
                     <p>{item.name} | {item.weight}kg</p>
                 </button>
             {/each}
         </div>
         <div class="col-span-1 p-4 max-h-[calc(100vh-7rem)] justify-center align-top space-y-2 overflow-y-auto scroolbar scrollbar-thin scrollbar-track-slate-100 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-900 dark:scrollbar-thumb-slate-500">
             {#each $pouch as item, index}
-                <button on:click={() => removeFromPouch(index)} class="flex border bg-black rounded-lg p-2 w-fit mx-auto h-fit">
+                <button on:click={() => removeFromPouch(index)} class="flex border bg-slate-100 dark:bg-slate-900 rounded-lg p-2 w-fit mx-auto h-fit">
                     <p>{item.name} | {item.weight}kg</p>
                 </button>
             {/each}
