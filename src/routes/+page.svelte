@@ -5,7 +5,7 @@
 <div class="font-mono grid grid-cols-2">
 	<div class="flex place-items-baseline col-span-full">
 		<CornerLeftUp class="size-12" />
-		<p class="text-lg">Acces the menu via this button</p>
+		<p class="text-lg">Acces the days via this button</p>
 	</div>
     <div class="flex flex-col justify-center items-center">
         <h2 class="text-3xl">

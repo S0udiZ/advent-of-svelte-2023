@@ -11,7 +11,7 @@
 <ModeWatcher />
 <main class="flex h-dvh">
 	<div
-		class="flex h-dvh w-0 flex-col overflow-hidden font-mono transition-all duration-300 ease-in-out"
+		class="flex h-dvh w-0 flex-col overflow-hidden font-mono transition-all duration-300 ease-in-out text-nowrap"
 		class:active={open}
 	>
 		<h2 class="font-bold p-0.5 text-center text-3xl my-2">Days</h2>
@@ -20,7 +20,7 @@
 		<ol
 			class="scrollbar-rounded-full grow overflow-y-scroll p-2 scrollbar-thin scrollbar-track-slate-100 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-900 dark:scrollbar-thumb-slate-500"
 		>
-			{#each { length: 1 } as _, index}
+			{#each { length: 2 } as _, index}
 				<li>
 					<a href="/day/{index + 1}" class="block p-2 hover:bg-gray-200 dark:hover:bg-gray-800">
 						Day {index + 1}
