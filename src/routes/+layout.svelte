@@ -9,7 +9,7 @@
 </script>
 
 <ModeWatcher />
-<main class="flex h-dvh">
+<main class="flex h-dvh font-mono">
 	<div
 		class="flex h-dvh w-0 flex-col overflow-hidden font-mono transition-all duration-300 ease-in-out text-nowrap"
 		class:active={open}
@@ -20,7 +20,7 @@
 		<ol
 			class="scrollbar-rounded-full grow overflow-y-scroll p-2 scrollbar-thin scrollbar-track-slate-100 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-900 dark:scrollbar-thumb-slate-500"
 		>
-			{#each { length: 2 } as _, index}
+			{#each { length: 3 } as _, index}
 				<li>
 					<a href="/day/{index + 1}" class="block p-2 hover:bg-gray-200 dark:hover:bg-gray-800">
 						Day {index + 1}
@@ -29,7 +29,7 @@
 			{/each}
 		</ol>
 	</div>
-	<div class="grow border-x-2 flex flex-col">
+	<div class="grow border-x-2 flex flex-col transition-all ease-in-out duration-300 {open ? "w-[calc(100%-15rem)]" : "w-full"}">
 		<header class="flex justify-between border-b-2 p-2">
 			<Button on:click={() => (open = !open)} variant="outline" size="icon">
 				<Menu class="size-[1.2rem]" />
