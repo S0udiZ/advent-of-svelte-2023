@@ -20,7 +20,7 @@
 		<ol
 			class="scrollbar-rounded-full grow overflow-y-scroll p-2 scrollbar-thin scrollbar-track-slate-100 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-900 dark:scrollbar-thumb-slate-500"
 		>
-			{#each { length: 3 } as _, index}
+			{#each { length: 4 } as _, index}
 				<li>
 					<a href="/day/{index + 1}" class="block p-2 hover:bg-gray-200 dark:hover:bg-gray-800">
 						Day {index + 1}
