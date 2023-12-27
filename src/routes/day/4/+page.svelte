@@ -7,6 +7,8 @@
 	let pulseOvertime: number[] = $state([]);
 	let heart: HTMLDivElement | null = $state(null);
 
+	const frequency = 240 / 60;
+
 	onMount(() => {
 		const interval = setInterval(async () => {
 			heartRate = await axios
@@ -30,23 +32,21 @@
 
 <section class="flex h-full flex-col">
 	<h2 class="text-3xl font-bold">Day 4 - Heart of Christmas</h2>
-	<article class="grid my-auto space-y-20 grid-cols-3">
-		<h2 class="col-span-full text-center text-6xl">SHRM™ (Santa's Heart Rate Monitor)</h2>
-        <div class="text-6xl font-bold text-center">
-            <p class="text-5xl">
-                Average heart rate:
-            </p>
-            <p>
-                {Math.round(pulseOvertime.reduce((a, b) => a + b, 0) / pulseOvertime.length)}
-            </p>
-        </div>
-		<div class="heart relative size-64 mx-auto" bind:this={heart}>
+	<article class="my-auto grid grid-cols-3 space-y-20 max-md:p-4">
+		<h2 class="col-span-full text-center text-6xl">SHRM™ <span class="max-md:hidden">(Santa's Heart Rate Monitor)</span></h2>
+		<div class="text-center text-6xl font-bold max-md:col-span-full">
+			<p class="text-5xl">Average heart rate:</p>
+			<p>
+				{Math.round(pulseOvertime.reduce((a, b) => a + b, 0) / pulseOvertime.length)}
+			</p>
+		</div>
+		<div class="heart relative mx-auto size-64 max-md:col-span-full" bind:this={heart}>
 			<Heart class="absolute inset-0 size-full fill-red-600 stroke-black stroke-1" />
 			<p class="absolute inset-0 flex items-center justify-center text-6xl font-bold text-white">
 				{heartRate}
 			</p>
 		</div>
-		<div class="relative flex h-fit w-[400px] items-center justify-center">
+		<div class="relative h-fit lg:w-[400px] w-full items-center justify-center max-md:col-span-full">
 			<div class="absolute -left-6 h-full text-xs text-white">
 				<ul class="flex h-full flex-col-reverse justify-evenly text-right">
 					{#each Array(14) as _, i}
@@ -54,10 +54,10 @@
 					{/each}
 				</ul>
 			</div>
-			<div class="absolute -bottom-4 right-0 w-[400px]">
+			<div class="absolute -bottom-4 right-0 lg:w-[400px] w-[calc(100%-1rem)]">
 				<ul class="flex w-full justify-between text-xs text-white">
 					{#each Array(16) as _, i}
-						<li class="">{i * 4}</li>
+						<li class="">{(i * frequency).toFixed(0)}</li>
 					{/each}
 				</ul>
 			</div>
@@ -75,11 +75,12 @@
 				{#each pulseOvertime as pulse, i}
 					<!-- <path d="M {} {130 - pulse} L {} {130 - pulseOvertime[Math.min(Math.max(i -1, 0), 60)]}" stroke="red" stroke-width="2" /> -->
 					<path
-						d="M {i * 4} {130 - pulse} L {(i - 1) * 4} {130 -
+						d="M {i * frequency} {130 - pulse} L {(i - 1) * frequency} {130 -
 							pulseOvertime[Math.min(Math.max(i - 1, 0), 60)]}"
 						stroke="red"
 						stroke-width="2"
 					/>
+					<circle cx={i * frequency} cy={130 - pulse} r="1" fill="red" />
 				{/each}
 			</svg>
 		</div>
